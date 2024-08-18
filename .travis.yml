@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install: 
+  - docker build -t chandara/docker-react-app -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true chandara/docker-react-app npm run test
